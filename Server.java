@@ -24,8 +24,9 @@ public class Server {
 
     /**
      * Starts the server, waits for player connections, and starts threads when players connect using PlayerHandler.
+     * @throws InterruptedException 
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.out.println("Starting server...");
         System.out.printf("Target: %d | Turns: %d\n", GOAL, TURNS);
 
@@ -41,6 +42,7 @@ public class Server {
                 threads[playerCount].start();
                 playerCount++;
             }//end while
+            ss.close();
         } catch (IOException e) {
             e.printStackTrace(); 
         }//end catch
